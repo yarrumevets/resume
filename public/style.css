@@ -22,6 +22,21 @@ a:hover::before {
   font-size: 12px;
 }
 
+.title {
+  color: rgba(200, 200, 200, 0.6);
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+  font-size: 3vw;
+  text-align: center;
+  margin: 30px auto;
+  min-width: 480px;
+}
+.reverse {
+  transform: scale(-1, 1);
+}
+.reverse:hover {
+  transform: none;
+}
+
 .main-wrapper {
   background: #fff;
   border: 0;
