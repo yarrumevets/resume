@@ -1,0 +1,27 @@
+{
+  "name": "resume",
+  "version": "1.0.0",
+  "description": "",
+  "main": "googledocsapi.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.17.0",
+    "googleapis": "^40.0.0",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarrumevets/resume.git"
+  },
+  "author": "Steve Murray",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yarrumevets/resume/issues"
+  },
+  "homepage": "https://github.com/yarrumevets/resume#readme"
+}
