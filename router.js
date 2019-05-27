@@ -123,41 +123,41 @@ router.get("/listfiles", (req, res) => {
 const nodemailer = require("nodemailer");
 const secret = require("./secret.gmail.config.js"); //
 router.get("/sendemail", (req, res) => {
-  // var current_date = new Date().valueOf().toString();
-  // var random = Math.random().toString();
-  // const hash = crypto
-  //   .createHash("sha1")
-  //   .update(current_date + random)
-  //   .digest("hex");
-
   const emailAddress = req.query.emailaddress;
-  // send the email.
-  var transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: secret.gmailAccount,
-      pass: secret.gmailPassword
-    }
-  });
-  var mailOptions = {
-    from: secret.gmailAccount,
-    to: emailAddress,
-    subject: "Resume | Steve Murray",
-    html: `<h1>Steve Murray's Resume</h1>`
-  };
+  const message = req.query.message;
 
-  // Send the reset email.
-  transporter.sendMail(mailOptions, function(error, info) {
-    if (error) {
-      console.log(error);
-      res.status(500);
-      console.log("Error sending reset email: ", error);
-      res.send("Error sending reset email.");
-      return;
-    } else {
-      res.status(200);
-      res.send("Email sent!!!!!");
-    }
+  const docData = googleapi.getGoogleDocs("text/html");
+  docData.then(dd => {
+    resumeContent = dd.data;
+
+    // send the email.
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: secret.gmailAccount,
+        pass: secret.gmailPassword
+      }
+    });
+    var mailOptions = {
+      from: secret.gmailAccount,
+      to: emailAddress,
+      subject: "Resume | Steve Murray",
+      html: `<h3 style="text-align: center;">Steve Murray's Resume</h3><hr style="margin: 50px auto; width: 80%; border: 0; height: 1px; background-color: #ccc;"/>${resumeContent}<hr  style="margin: 50px auto; width: 80%; border: 0; height: 1px; background-color: #ccc;"/><p style="text-align: center;">* This email has been automatically sent because someone submitted a request to forward my resume to you. Thank you for reading!</p><p style="text-align: center;"><a style="color: #000; text-decoration: none;" href="http://www.yarrumevets.com/resume">www.yarrumevets.com/resume</a></p>`
+    };
+
+    // Send the reset email.
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+        res.status(500);
+        console.log("Error sending reset email: ", error);
+        res.send("Error sending reset email.");
+        return;
+      } else {
+        res.status(200);
+        res.send(`Email sent to ${emailAddress}`);
+      }
+    });
   });
 });
 
