@@ -55,7 +55,7 @@ googleDocsApi.listFiles = () => {
 function getTextFile(auth, options) {
   const { mimeType } = options;
   const drive = google.drive({ version: "v3", auth });
-  console.log("mimeType: ", mimeType);
+  // console.log("mimeType: ", mimeType);
   return drive.files
     .export({
       fileId: config.resumeFileId,
