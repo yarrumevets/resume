@@ -14,9 +14,12 @@
       <header>
         <h1 class="title">Steve Murray's Resumé</h1>
       </header>
-    <div class="main-wrapper" id="main-wrapper">
-      <div id="resume-content">Loading from Google Drive API...</div>
-      <nav class="file-format-links web-only">
+      <div class="main-wrapper" id="main-wrapper">
+        <div id="resume-content">Loading from Google Drive API...</div>
+        <nav class="file-format-links web-only">
+            <a hovertext="Email Me" href="#" id="email-button"
+              ><i class="far fa-envelope"></i> Email Resume</a
+            >
         <div>
           <a
             hovertext="Download pdf version"
@@ -46,15 +49,18 @@
             ><i class="fab fa-google-plus"></i> Google Drive</a
           >
         </div>
-        <a hovertext="Email Me" href="#" id="email-button"
-          ><i class="far fa-envelope"></i> Email Resume</a
-        >
         <a hovertext="Print Me" href="#" id="print-button"
           ><i class="fas fa-print"></i> Print</a
         >
         <a hovertext="Resume App on GitHub" href="https://github.com/yarrumevets/resume"><i class="fab fa-github"></i> Git</a
             ></a>
       </nav>
+      <div id="email-form">
+          <form>
+            <input type="text" id="email-address" placeholder="johndoe@gmail.com" value="yarrumevets@yahoo.com"/>
+            <button id="send-email-button">Send <i class="far fa-envelope"></i></button>
+          </form>
+      </div>
     </div>
 
     <footer class="web-only">

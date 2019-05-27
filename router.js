@@ -27,7 +27,6 @@ router.use((req, res, next) => {
 router.get("/html", (req, res) => {
   const docData = googleapi.getGoogleDocs("text/html");
   docData.then(dd => {
-    // console.log("dd.data: ", dd.data);
     res.send(dd.data);
   });
 });
@@ -35,7 +34,6 @@ router.get("/html", (req, res) => {
 router.get("/text", (req, res) => {
   const docData = googleapi.getGoogleDocs("text/plain");
   docData.then(dd => {
-    // console.log("dd.data: ", dd.data);
     res.send("" + dd.data.toString());
   });
 });
@@ -121,6 +119,47 @@ router.get("/listfiles", (req, res) => {
 //     res.send(dd.data);
 //   });
 // });
+
+const nodemailer = require("nodemailer");
+const secret = require("./secret.gmail.config.js"); //
+router.get("/sendemail", (req, res) => {
+  // var current_date = new Date().valueOf().toString();
+  // var random = Math.random().toString();
+  // const hash = crypto
+  //   .createHash("sha1")
+  //   .update(current_date + random)
+  //   .digest("hex");
+
+  const emailAddress = req.query.emailaddress;
+  // send the email.
+  var transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: secret.gmailAccount,
+      pass: secret.gmailPassword
+    }
+  });
+  var mailOptions = {
+    from: secret.gmailAccount,
+    to: emailAddress,
+    subject: "Resume | Steve Murray",
+    html: `<h1>Steve Murray's Resume</h1>`
+  };
+
+  // Send the reset email.
+  transporter.sendMail(mailOptions, function(error, info) {
+    if (error) {
+      console.log(error);
+      res.status(500);
+      console.log("Error sending reset email: ", error);
+      res.send("Error sending reset email.");
+      return;
+    } else {
+      res.status(200);
+      res.send("Email sent!!!!!");
+    }
+  });
+});
 
 // Serve the index.html page that wraps the resume or links to other file types.
 router.use("/", express.static(__dirname + "/public"));
