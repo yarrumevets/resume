@@ -104,4 +104,9 @@ footer a {
   .web-only {
     display: none;
   }
+  #main-wrapper {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
 }
