@@ -10,7 +10,7 @@ a {
   text-decoration: none;
 }
 
-a:hover::before {
+a[hovertext]:hover::before {
   position: absolute;
   background: black;
   color: white;
@@ -115,10 +115,49 @@ footer a {
   width: 50%;
 }
 
+/* These are assumed to be comments in the margins that get exported as divs */
+#resume-content div {
+  display: none !important; /* ! This negates the following styles. May be implemented later. */
+  /* position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ffaa00;
+  padding: 10px;
+  max-width: 200px; */
+}
+/* #resume-content div span {
+  font-size: 8px;
+}
+#resume-content div a {
+  display: none;
+}
+#resume-content div span::before {
+  content: "Note:";
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 3px;
+} */
+#resume-content sup {
+  display: none !important;
+}
+
 /* Print/Web-specific */
 @media not print {
   .print-only {
     display: none;
+  }
+
+  /* Add some more styles and spacing for non-print versoin */
+  h1 {
+    margin-top: 15px;
+  }
+
+  h2 {
+    margin: 5px 0 0 0 !important;
+  }
+
+  li {
+    margin-top: 5px !important;
   }
 }
 @media print {
@@ -127,7 +166,11 @@ footer a {
   }
   #main-wrapper {
     padding: 0;
-    margin: 0;
+    margin: 50px 0 0 0;
     box-shadow: none;
+  }
+
+  #resume-content div {
+    display: none;
   }
 }
