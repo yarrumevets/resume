@@ -22,20 +22,20 @@ a[hovertext]:hover::before {
   font-size: 12px;
 }
 
-.title {
+/* .title {
   color: rgba(200, 200, 200, 0.6);
   text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
   font-size: 3vw;
   text-align: center;
   margin: 30px auto;
   min-width: 480px;
-}
-.reverse {
+} */
+/* .reverse {
   transform: scale(-1, 1);
 }
 .reverse:hover {
   transform: none;
-}
+} */
 
 .main-wrapper {
   background: #fff;
@@ -115,30 +115,55 @@ footer a {
   width: 50%;
 }
 
-/* These are assumed to be comments in the margins that get exported as divs */
+/* NOTES STUFF */
 #resume-content div {
-  display: none !important; /* ! This negates the following styles. May be implemented later. */
-  /* position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #ffaa00;
-  padding: 10px;
-  max-width: 200px; */
+  display: none !important;
 }
-/* #resume-content div span {
-  font-size: 8px;
+
+#resume-content sup a {
+  display: none !important;
+  /* color: orangered;
+  font-weight: bolder;
+  visibility: hidden;
+  font-size: 0; */
+}
+
+/*
+#resume-content sup a::before {
+  content: "\270E";
+  visibility: visible;
+  font-size: 10px;
+}
+
+#footer-notes {
+  border: 1px solid blue;
+}
+#footer-notes div {
+  position: relative;
+  float: right;
+  background: #fafafa;
+  padding: 10px;
+  max-width: 80%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+#resume-content div span {
+  font-size: 8px !important;
+  color: #555 !important
+;
 }
 #resume-content div a {
-  display: none;
+  visibility: hidden;
+  font-weight: bolder;
+  color: #555;
 }
-#resume-content div span::before {
-  content: "Note:";
+*/
+#resume-content div a::before {
+  visibility: visible;
+  content: "\0261D Note:";
   display: block;
   font-weight: bolder;
-  margin-bottom: 3px;
-} */
-#resume-content sup {
-  display: none !important;
+  margin-bottom: 4px;
 }
 
 /* Print/Web-specific */
@@ -147,27 +172,53 @@ footer a {
     display: none;
   }
 
+  #main-wrapper #resume-content p.title span {
+    background: #555;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+    font-size: 5vw !important;
+    font-weight: bold !important;
+    display: block;
+    width: calc(100% + 160px);
+    padding: 40px 0;
+    margin: 0;
+    margin-left: -80px;
+    margin-top: -80px;
+  }
+
   /* Add some more styles and spacing for non-print versoin */
-  h1 {
-    margin-top: 15px;
+  #main-wrapper #resume-content h1 span {
+    margin-bottom: 8px;
+    font-size: 24px !important;
+  }
+  #main-wrapper #resume-content h1 {
+    margin-bottom: 8px !important;
+    margin-top: 16px !important;
   }
 
-  h2 {
-    margin: 5px 0 0 0 !important;
+  #main-wrapper #resume-content h2 {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
   }
 
-  li {
-    margin-top: 5px !important;
+  #main-wrapper #resume-content ul li {
+    margin-top: 4px !important;
   }
 }
+
 @media print {
   .web-only {
     display: none;
   }
   #main-wrapper {
     padding: 0;
-    margin: 50px 0 0 0;
+    margin: 48px 0 0 0;
     box-shadow: none;
+  }
+
+  #main-wrapper #resume-content span a {
+    color: #000 !important;
   }
 
   #resume-content div {

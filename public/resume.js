@@ -48,10 +48,16 @@ window.onload = () => {
       }
     );
   };
-
   sendEmailButton.onclick = sendEmail;
 
   apiGetCall("/resume/html", responseText => {
     resumeContent.innerHTML = responseText;
+    // Deal with notes.
+    // // const notes = [];
+    // const footerNotes = document.getElementById("footer-notes");
+    // document.querySelectorAll('a[id^="cmnt"]').forEach(a => {
+    //   console.log("a: ", a);
+    //   a.id.indexOf("_") == -1 ? footerNotes.appendChild(a) : null;
+    // });
   });
 };
