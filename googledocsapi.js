@@ -21,7 +21,7 @@ const TOKEN_PATH = "token.json";
 const authFunction = (theFunc, options) => {
   // Load client secrets from a local file.
   return new Promise((resolve, reject) => {
-    fs.readFile("credentials.json", (err, content) => {
+    fs.readFile(__dirname + "/credentials.json", (err, content) => {
       if (err) return console.log("Error loading client secret file:", err);
       // Authorize a client with credentials, then call the Google Drive API.
       // authorize(JSON.parse(content), listFiles);
