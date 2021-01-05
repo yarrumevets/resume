@@ -4,7 +4,7 @@
   "description": "",
   "main": "googledocsapi.js",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "express": "^4.17.0",
     "googleapis": "^40.0.0",
     "moment": "^2.24.0",
