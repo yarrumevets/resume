@@ -1,0 +1,47 @@
+body {
+  background-color: #333;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.page-title {
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+  font-size: 3vw;
+  text-align: center;
+  margin: 0;
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+
+#resume-container {
+  margin: auto;
+  background-color: aliceblue;
+  max-width: 1024px;
+  padding: 50px;
+}
+
+.file-type-button-list {
+  justify-content: center;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.file-type-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  background-color: #999;
+  list-style-type: none;
+}
+
+footer {
+  text-align: center;
+  color: #999;
+  font-size: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
