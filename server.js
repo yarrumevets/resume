@@ -27,6 +27,23 @@ const drive = google.drive({ version: "v3", auth });
 
 async function exportGoogleDoc(docId, mimeType) {
   try {
+    const response = await drive.files.export(
+      {
+        fileId: docId,
+        mimeType: mimeType,
+      },
+      { responseType: "stream" }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Error exporting Google Doc:", error);
+    return null;
+  }
+}
+
+async function exportGoogleDocTextFormat(docId, mimeType) {
+  try {
     const response = await drive.files.export({
       fileId: docId,
       mimeType: mimeType,
@@ -40,7 +57,7 @@ async function exportGoogleDoc(docId, mimeType) {
 }
 
 const fetchGoogleDocText = async (fileType, mimeType, res) => {
-  const exportedContent = await exportGoogleDoc(docId, mimeType);
+  const exportedContent = await exportGoogleDocTextFormat(docId, mimeType);
   if (exportedContent) {
     res.send(exportedContent);
   } else {
@@ -54,13 +71,12 @@ const fetchGoogleDoc = async (fileType, mimeType, res) => {
     if (!exportedContent) {
       throw new Error("Exported content is missing or undefined.");
     }
+    const filename = `exported-document.${fileType}`;
     res.setHeader("Content-Type", mimeType);
-    res.setHeader("Content-Disposition");
-    // Convert Blob to Buffer using arrayBuffer()
-    const buffer = await exportedContent.arrayBuffer();
-    // Send the response with the Buffer
-    res.end(Buffer.from(buffer));
+    res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+    exportedContent.pipe(res);
   } catch (error) {
+    console.error("Error fetchGoogleDoc: ", error);
     res.status(500).send(`Error exporting Google Doc (${fileType}):`);
   }
 };
@@ -95,7 +111,7 @@ app.get("/docx", async (req, res) => {
 
 // RTF
 app.get("/rtf", async (req, res) => {
-  const mimeType = "application/rft";
+  const mimeType = "application/rtf";
   const fileType = "rtf";
   fetchGoogleDoc(fileType, mimeType, res);
 });

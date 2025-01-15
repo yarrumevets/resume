@@ -4,26 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Resume - Steve Murray</title>
   </head>
   <body>
-    <h1 class="page-title">Steve Murray's Resume</h1>
-
-    <ul class="file-type-button-list">
-      <!-- <li class="file-type-button" id="html-button">HTML</li> -->
-      <li class="file-type-button" id="txt-button">TXT</li>
-      <li class="file-type-button" id="pdf-button">PDF</li>
-      <li class="file-type-button" id="docx-button">DOCX</li>
-      <li class="file-type-button" id="rtf-button">RTF</li>
-      <li class="file-type-button" id="zip-button">ZIP</li>
-      <li class="file-type-button" id="epub-button">EPUB</li>
-    </ul>
-
-    <div id="resume-container"></div>
+    <header>
+      <h1 class="page-title">Steve Murray's Resumé</h1>
+      <p id="github">
+        View my Google Docs resume viewer &amp; multiformat download project on
+        <a href="https://github.com/yarrumevets/resume" target="_blank">
+          &nbsp;Github <img src="./images/github.svg" alt="Github icon"
+        /></a>
+      </p>
+    </header>
+    <main>
+      <div id="resume-container">
+        <span class="loading"
+          ><img src="./images/googledocs.png" alt="Google Docs logo" /> Fetching
+          resumé from Google Docs...</span
+        >
+      </div>
+      <ul class="file-type-button-list">
+        <lh>Download options</lh>
+        <li class="file-type-button" id="docx-button">DOCX</li>
+        <li class="file-type-button" id="pdf-button">PDF</li>
+        <li class="file-type-button" id="rtf-button">RTF</li>
+        <li class="file-type-button" id="txt-button">TXT</li>
+        <li class="file-type-button" id="zip-button">ZIP</li>
+        <li class="file-type-button" id="epub-button">EPUB</li>
+        <li class="file-type-button" id="html-button">HTML</li>
+      </ul>
+    </main>
     <footer>
-      <p>&copy; 2024 Steve Murray. All Rights Reserved.</p>
+      <p>&copy; 2025 Steve Murray. All Rights Reserved.</p>
     </footer>
-
+    <!-- <div id="quickdownload-button">
+      <p><span id="download-symbol">&#x2B07;</span><span>download</span></p>
+    </div> -->
     <script src="main.js"></script>
   </body>
 </html>

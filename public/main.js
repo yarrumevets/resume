@@ -1,4 +1,4 @@
-// const htmlButton = document.getElementById("html-button");
+const htmlButton = document.getElementById("html-button");
 const pdfButton = document.getElementById("pdf-button");
 const docxButton = document.getElementById("docx-button");
 const rtfButton = document.getElementById("rtf-button");
@@ -26,10 +26,6 @@ const loadTextFormat = (fileType) => {
 };
 
 loadTextFormat("html");
-
-// htmlButton.addEventListener("click", async () => {
-//   loadTextFormat("html");
-// });
 
 // Download blob
 const downloadFile = async (fileType) => {
@@ -85,4 +81,9 @@ zipButton.addEventListener("click", async () => {
 // epub download.
 epubButton.addEventListener("click", async () => {
   downloadFile("epub");
+});
+
+htmlButton.addEventListener("click", async () => {
+  // loadTextFormat("html");
+  downloadFile("html");
 });
