@@ -5,8 +5,13 @@ const rtfButton = document.getElementById("rtf-button");
 const txtButton = document.getElementById("txt-button");
 const zipButton = document.getElementById("zip-button");
 const epubButton = document.getElementById("epub-button");
+const pageTitle = document.getElementById("page-title");
 
-const fileName = "Steve Murray Resume";
+const FILE_NAME = "Steve Murray's Resume";
+const PAGE_TITLE = "Steve Murray's Resumé";
+
+pageTitle.innerText = PAGE_TITLE;
+document.title = PAGE_TITLE;
 
 // Load HTML resume into DOM.
 const loadTextFormat = (fileType) => {
@@ -43,7 +48,7 @@ const downloadFile = async (fileType) => {
     // Create a temporary button and click it to trigger download.
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${fileName}.${fileType}`;
+    a.download = `${FILE_NAME}.${fileType}`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
