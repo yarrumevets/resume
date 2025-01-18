@@ -13,6 +13,31 @@ const PAGE_TITLE = "Steve Murray's Resumé";
 pageTitle.innerText = PAGE_TITLE;
 document.title = PAGE_TITLE;
 
+// Do some simple clean-up based on how Goolge generates HTML versions of Docs.
+// @TODO - Move some of all of this parsing to the back-end.
+const cleanUpHtml = (html) => {
+  let cleanHtml = "";
+  // Fix links by removing `https://www.google.com/url?q=`
+  cleanHtml = html.replace(
+    /https:\/\/www\.google\.com\/url\?q=([^&"]+)/g,
+    "$1"
+  );
+  // Make links open in a new page/tab:
+  cleanHtml = cleanHtml.replace(
+    /<a\b([^>]*href="[^"]+")/g,
+    '<a$1 target="_blank"'
+  );
+  // Remove everything after Google's appended '&sa='
+  cleanHtml = cleanHtml.replace(
+    /(<a\b[^>]*href="[^"]+?)&amp;sa=.*?(")/g,
+    "$1$2"
+  );
+
+  console.log("clean HTML: ", cleanHtml);
+
+  return cleanHtml;
+};
+
 // Load HTML resume into DOM.
 const loadTextFormat = (fileType) => {
   fetch(fileType)
@@ -23,7 +48,8 @@ const loadTextFormat = (fileType) => {
       return response.text();
     })
     .then(function (data) {
-      document.getElementById("resume-container").innerHTML = data;
+      const cleanedData = cleanUpHtml(data);
+      document.getElementById("resume-container").innerHTML = cleanedData;
     })
     .catch(function (error) {
       console.error(error.message);
