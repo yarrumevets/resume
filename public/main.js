@@ -7,8 +7,8 @@ const zipButton = document.getElementById("zip-button");
 const epubButton = document.getElementById("epub-button");
 const pageTitle = document.getElementById("page-title");
 
-const FILE_NAME = "Steve Murray's Resume";
-const PAGE_TITLE = "Steve Murray's Resumé";
+const FILE_NAME = "Steve Murray's Résumé";
+const PAGE_TITLE = "Steve Murray's Résumé";
 
 pageTitle.innerText = PAGE_TITLE;
 document.title = PAGE_TITLE;
@@ -38,7 +38,7 @@ const cleanUpHtml = (html) => {
   return cleanHtml;
 };
 
-// Load HTML resume into DOM.
+// Load HTML résumé into DOM.
 const loadTextFormat = (fileType) => {
   fetch(fileType)
     .then(function (response) {

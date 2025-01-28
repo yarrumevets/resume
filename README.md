@@ -1,4 +1,4 @@
-# &#128209; Google Docs Resumé Viewer & Downloader
+# &#128209; Google Docs Résumé Viewer & Downloader
 
 A simple app for displaying and downloading a Google Drive docs in various formats.
 
@@ -17,7 +17,7 @@ A simple app for displaying and downloading a Google Drive docs in various forma
 
 ## Introduction
 
-I started this project as a simple challenge to get my feet wet with some of the features of Google Cloud, while also building something to display and distribute my resumé.
+I started this project as a simple challenge to get my feet wet with some of the features of Google Cloud, while also building something to display and distribute my résumé.
 
 ## Tech
 
@@ -48,7 +48,7 @@ yarn
 
 Google Docs:
 
-- Create a resume, or any file that you'd like to display and share.
+- Create a résumé, or any file that you'd like to display and share.
 
 Google Cloud:
 
@@ -95,4 +95,4 @@ Google official icons: https://about.google/brand-resource-center/logos-list/
 
 ## Live Demo
 
-&#128073; [Live Demo of my resumé](https://yarrumevets.com/resume) &#128072;
+&#128073; [Live Demo of my résumé](https://yarrumevets.com/resume) &#128072;
